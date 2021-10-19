@@ -2,12 +2,11 @@
 layout: default
 ---
 
-<h1>Blog</h1>
+<h1>Blogs</h1>
 
 {{ content }}
 
-<h1>Posts</h1>
-{% assign postsByYear = site.blog | group_by_exp:"post", "post.date | date: '%Y'" %}
+{% assign postsByYear = site.blogs | group_by_exp:"post", "post.date | date: '%Y'" %}
 {% for year in postsByYear %}
 {{ year.name }}
   <ul style="padding-top: 0.1em;">

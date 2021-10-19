@@ -1,0 +1,26 @@
+---
+layout: default
+---
+
+<h1>Notes</h1>
+
+{{ content }}
+
+{% assign notesByCategory = site.notes | group_by_exp:"note", "note.categories" %}
+{% for categoryName in notesByCategory %}
+{{ categoryName.name }}
+  <ul style="padding-top: 0.1em;">
+    {% for note in categoryName.items %}
+    <li style="line-height: 1; padding-top: 0.4em;">
+      <a href="{{ note.url | absolute_url }}"> {{ note.name }}</a>
+      <br>
+      <span class="tag">
+        <small>
+          &lt;{{ node.tags | join: '/&gt; &lt;' }}/&gt;
+        </small>
+      </span>
+    </li>
+    {% endfor %}
+  </ul>
+  <br>
+{% endfor %}
