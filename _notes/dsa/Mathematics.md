@@ -29,8 +29,23 @@ date: 2021-10-19
               {left: '$$', right: '$$', display: true},
               {left: '$', right: '$', display: false},
               {left: '\[', right: '\]', dispaly: true}
+              {left: '\(', right: '\)', dispaly: false}
           ],
-          throwOnError : false
+          throwOnError : true
+        });
+    });
+    a = document.getElementById("main_content")
+    console.log(a)
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(a, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\[', right: '\]', dispaly: true}
+          ],
+          throwOnError : true
         });
     });
 </script>
@@ -39,12 +54,12 @@ ${toc}
 # Binary Exponentiation
 - index shown in binary
 $x^{10011010} = x^{10000000}\cdot x^{10000}\cdot x^{1000}\cdot x^{10}$
-$\text{so } x^n  = \begin{cases}
+$$\text{so } x^n  = \begin{cases}
 	1, & n==0\\
 	 (a^{\frac{n}{2}})^ 2&  n>0 \text{ and } n \text{ even}\\
 	(a^{\frac{n-1}{2}})^2 & n>0 \text{ and } n \text{ odd}
 	\end{cases}\\
-$
+$$
 - implementation
 ```c++
 //calculating (base^index) mod m
@@ -63,7 +78,7 @@ long long binexp(long long base, long long index, long long m){
 ```
 
 # Euclidian Algorithm for GCD & LCM O(log<sub>10</sub>min(a,b))
-    
+
 
 ```c++
 //use __gcd(c++17 has both inbuilt gcd() and lcm() in numeric header)
@@ -103,18 +118,18 @@ its clear that $p_i>0$ because $b_{i+1} > b_i$, so for same starting values of $
 - if both are odd then bigger = bigger - smaller
 
 ```c++
-long long gcd(long long a, long long b) { 
-    if (!a || !b) 
-        return a | b; 
-    unsigned long long shift = __builtin_ctzll(a | b); 
-    a >>= __builtin_ctzll(a); 
-    do { 
-        b >>= __builtin_ctzll(b); 
-        if (a > b) 
-            swap(a, b); 
-        b -= a; 
-    } while (b); 
-    return a << shift; 
+long long gcd(long long a, long long b) {
+    if (!a || !b)
+        return a | b;
+    unsigned long long shift = __builtin_ctzll(a | b);
+    a >>= __builtin_ctzll(a);
+    do {
+        b >>= __builtin_ctzll(b);
+        if (a > b)
+            swap(a, b);
+        b -= a;
+    } while (b);
+    return a << shift;
 }
 ```
 
@@ -151,7 +166,7 @@ we'll compute $r_i =r_{i-2}\text{ mod } r_{i-1} = r_{i-2} - r_{i-1}q_i$
 using equation $(1)$ and simplifying
 $s_i = s_{i-2} - s_{i-1}q_i$
 $s_i = t_{i-2} - t_{i-1}q_i$
-also using equation $(1)$ gives us 
+also using equation $(1)$ gives us
 $s_0 = 1,t_0 = 0, s_1 = 0, t_1 = 1$
 if in the $n^{th}$ iteration, $r_{n-1}$ becomes zero then:
 $gcd(a,b) = gcd(r_0,r_1)= gcd(r_1,r_2)= ... = gcd(r_{n-2},0) = r_{n-2}$
@@ -159,16 +174,16 @@ $\implies gcd(a,b) =  r_{n-2} = s_{n-2}a + t_{n-2}b$
 
 In the equation $r_i = r_{i-2} - r_{i-1}q_i$, `x,y` plays the role of $s_{i-2},t_{i-2}$ and `x1,y2` plays the role of $s_{i-1},t_{i-1}$
 ```c++
-int extended_gcd(int a, int b, int& x, int& y) { 
-    x = 1, y = 0; 
-    int x1 = 0, y1 = 1; 
-    while (b) { 
-        int q = a / b; 
-        tie(x, x1) = make_tuple (x1, x - q * x1); 
-        tie(y, y1) = make_tuple (y1, y - q * y1); 
-        tie(a, b) = make_tuple (b, a - q * b); 
-    } 
-    return a; 
+int extended_gcd(int a, int b, int& x, int& y) {
+    x = 1, y = 0;
+    int x1 = 0, y1 = 1;
+    while (b) {
+        int q = a / b;
+        tie(x, x1) = make_tuple (x1, x - q * x1);
+        tie(y, y1) = make_tuple (y1, y - q * y1);
+        tie(a, b) = make_tuple (b, a - q * b);
+    }
+    return a;
 }
 ```
 
@@ -181,7 +196,7 @@ int extended_gcd(int a, int b, int& x, int& y) {
 bool find_any_solution (int a, int b, int c, int &x0, int &y0) {
 	int g = extended_gcd(abs(a), abs(b), x0, y0);
 	if (c % g) return false;
-    
+
 	x0 *= c / g;
 	y0 *= c / g;
 	if (a < 0) x0 = -x0;
@@ -202,7 +217,7 @@ $x = x_{0} + k\cdot \frac{b}{g}$
 $y = y_{0} - k\cdot \frac{a}{g}$
 ### couting solutions
 
-$a\cdot x+b\cdot y =c$ is made $\frac{a}{g}\cdot x + \frac{b}{g}\cdot y = \frac{c}{g}$ in the beginning which makes gcd of coefficients 1. 
+$a\cdot x+b\cdot y =c$ is made $\frac{a}{g}\cdot x + \frac{b}{g}\cdot y = \frac{c}{g}$ in the beginning which makes gcd of coefficients 1.
 
 Denote the solution by $x_{0},\: y_{0}$
 
@@ -221,7 +236,7 @@ void shift_solution(int & x, int & y, int a, int b, int cnt) {
 int find_all_solutions(int a, int b, int c, int minx, int maxx, int miny, int maxy) {
 	int x, y, g;
 	// be sure to modify find_any_solution for setting 'g'
-	if (!find_any_solution(a, b, c, x, y, g))	
+	if (!find_any_solution(a, b, c, x, y, g))
 		return 0;
 	a /= g;
 	b /= g;
@@ -275,7 +290,7 @@ so if $a>b$ choose largest value on $k$ and if $b>a$ choose smallest value of $k
 # Fibonacci Numbers
 - $F_{0} = 0,\: F_{1} = 1,\: F_{n} = F_{n-1} + F_{n-2}\: for\: n\geq 2$
 - $det\begin{bmatrix}
-F_{n+1} & F_{n}\\ 
+F_{n+1} & F_{n}\\
 F_{n} & F_{n-1}
 \end{bmatrix} = det\begin{bmatrix}
 1 & 1\\
@@ -284,7 +299,7 @@ F_{n} & F_{n-1}
 - **Cassini's Identity** $F_{n-1}F_{n+1}-F{_n}^2=(-1)^n$
 	proof:
 	$F_{n-1}F_{n+1}-F{_n}^2=det\begin{bmatrix}
-F_{n+1} & F_{n}\\ 
+F_{n+1} & F_{n}\\
 F_{n} & F_{n-1}
 \end{bmatrix} = det\begin{bmatrix}
 1 & 1\\
@@ -302,7 +317,7 @@ F_{n} & F_{n-1}
 	carry out the multiplication and match corresponding entries in matrices on both sides
 	<br>
 - $k=n$ case in above: $F_{2n} = F_{n}(F_{n+1}+F_{n-1})$
-- from above for $k\in \Z^{+}$, $F_{nk}$ is multiple of $F_{n}$ 
+- from above for $k\in \Z^{+}$, $F_{nk}$ is multiple of $F_{n}$
 - **gcd indentity** $gcd(F_{n},F_{m}) = F_{gcd(n,m)}$
 - from above if $f_{m}|f_{n}$ then $m|n$
 - fibonacci numbers are worst case inputs for the Euclidian algorithm for gcd
@@ -325,8 +340,8 @@ F_{n} & F_{n-1}
 	 1. remove the ending 1
 	 2. for $i^{th}$ bit set add $F_{i+2}$ to the number
 <br>
- 
- ## formulas for $i^{th}$ fibonacci number	  
+
+ ## formulas for $i^{th}$ fibonacci number
 - $F_{n} =$ nearest integer of $\left(\frac{1+\sqrt{5}}{2}  \right)^n / \sqrt{5}$
 - $\begin{bmatrix} F_{n} \\ F_{n-1} \end{bmatrix}=
 	\begin{bmatrix} 1 & 1 \\ 1 & 0 \end{bmatrix}
@@ -335,7 +350,7 @@ F_{n} & F_{n-1}
 	 $\begin{bmatrix} F_{n} \\ F_{n-1} \end{bmatrix} = P^{n}\begin{bmatrix} F_{1} \\ F_{0} \end{bmatrix}$
 ### fast doubling method
 by $F_{n+k} = F_{k}F_{n+1} + F_{k-1}F_{n}$
-we have 
+we have
 $F_{2k} = F_{k}(2F_{k+1} - F_{k})$
 $F_{2k+1} = F_{k+1}^2+ F_{k}^2$
 - this way we can find Fibonacci numbers with $\mathcal{O}(\lg n)$ cost, same as matrix binary multiplication but better
@@ -370,7 +385,7 @@ for (int i = 2; i <= n; i++) {
 		for (int j = i * i; j <= n; j += i)
 			is_prime[j] = false;
 	}
-}  
+}
 ```
 algorithm performs $n/p$ operations for every prime $p\leq n$
 number of primes less than or equal to n approx. $n/\ln n$
@@ -385,7 +400,7 @@ so algorithm complexity
 		 1. to find primes till n we only need to traverse till $\sqrt n$
 		 2. sieving odd numbers only
 		 3. `vector<char>` consume more memory(8x) but `vector<bool>` has read/write overhead; with usual sieve, `vector<bool>` is faster because we're limited by how fast we load in cache. But with segmented sieve, `vector<char>` gives advantage.
-##  Segmented Sieve	
+##  Segmented Sieve
 - we count all primes blockwise for cache efficiency
 ```c++
 int count_primes(int n) {
@@ -393,7 +408,7 @@ int count_primes(int n) {
     vector<int> primes;
     int nsqrt = sqrt(n);
     vector<char> is_prime(nsqrt + 2, true);
-	
+
     for (int i = 2; i <= nsqrt; i++) {
         if (is_prime[i]) {
             primes.push_back(i);

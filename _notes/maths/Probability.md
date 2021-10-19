@@ -4,36 +4,6 @@ name: _notes/maths/Probability.md
 categories: Mathematics
 date: 2021-10-19
 ---
-<script 
-    type="text/javascript"
-    src="https://unpkg.com/mermaid@8.13.2/dist/mermaid.min.js">
-</script>
-
-<link 
-  rel="stylesheet" 
-  href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
-
-<script defer 
-  src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous">
-</script>
-
-<script defer 
-  src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous">
-</script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(document.body, {
-          // customised options
-          // • auto-render specific keys, e.g.:
-          delimiters: [
-              {left: '$$', right: '$$', display: true},
-              {left: '$', right: '$', display: false},
-              {left: '\[', right: '\]', dispaly: true}
-          ],
-          throwOnError : false
-        });
-    });
-</script>
 ${toc}
 
 # Basics
@@ -49,40 +19,38 @@ ${toc}
 	- $P(\Omega )=1$ normalization
 	- (finite)additivity if $A \cap B=\phi$ then $P(A\cup B)=P(A) + P(B)$: this only hold for countable sequence of events(whose elements can be arranged in a sequence: 1/2,1/4,1/8... is countable sequence but real line is not)
 
-
 #  Conditioning & Baye's Theorem
-- $P(A | B)$: probability of A given B(happened)
-$$P(A | B)=\frac{P{(A \cap B)}}{P(B)}
-$$
-<p align="center"><img src="../_resources/3505aff5868b927442c21fc70d243db0.png" /></p>
+- $P(A\vert B)$ : probability of A given B(happened)
+$P(A\vert B)=\frac{P{(A \cap B)}}{P(B)}$
+<p align="center"><img src="/assets/images/3505aff5868b927442c21fc70d243db0.png" /></p>
 
-- multiplication rule $P(A\cap B)=P(B)P(A|B)=P(A)P(B|A)$
+- multiplication rule $P(A\cap B)=P(B)P(A\vert B)=P(A)P(B\vert A)$
 - total probability theorem: if sample space partitioned into $A_1,A_2,...$ then 
-  $$P(B)=\sum\limits_{i}{P(A_i)P(B|A_i)}
+  $$P(B)=\sum\limits_{i}{P(A_i)P(B\vert A_i)}
   $$
   
 <br>
 
 - **Baye's rule**
 	- have $P(A_i)$'s (initial belief of situations e.g. probability of faulty equipment)
-	- have $P(B|A_i)$'s' (e.g. probability of operation failure given faulty/non-faulty equipment)
+	- have $P(B\vert A_i)$'s' (e.g. probability of operation failure given faulty/non-faulty equipment)
 	- revise beliefs, given that B occured
 $$
-P(A_i|B) = \frac{P(A_i\cap B)}{P(B)}= \frac{P(A_i)P(B|A_i)}{ \sum\limits_{j}{P(A_j)P(B|A_j)} }
+P(A_i\vert B) = \frac{P(A_i\cap B)}{P(B)}= \frac{P(A_i)P(B\vert A_i)}{ \sum\limits_{j}{P(A_j)P(B\vert A_j)} }
 $$
 
 <br>
 
 - Bayesian inference
 	- initial beliefs $P(A_i)$ on the possible cause of an observed even B
-	- model the world under each $A_i$ i.e. $P(B|A_i)$ so  
-		$A_i \xrightarrow [ P(B|A_i) ] {\text{model}}B$ 
+	- model the world under each $A_i$ i.e. $P(B\vert A_i)$ so
+		$A_i \xrightarrow [ P(B\vert A_i) ] {\text{model}}B$
 	- draw conclusions about causes 
-		$B \xrightarrow [ P(A_i|B) ] {\text{inference}}A_i$
+		$B \xrightarrow [ P(A_i\vert B) ] {\text{inference}}A_i$
 		
 		
 # Independence of events
-- $P(B|A)=P(B)$; or $P(A|B)=P(A)$; or $P(A\cap B)=P(A)P(B)$
+- $P(B\vert A)=P(B)$; or $P(A\vert B)=P(A)$; or $P(A\cap B)=P(A)P(B)$
 - information on some events doest not change probabilities of other events
 - independence vs pairwise independence
 
@@ -172,14 +140,14 @@ $$
    n can be replaced by b-a, if 0,1,2,...,n are replaced by a,a+1,...,b
    
 # Conditioning discrete random variables
-- $$p_{X|A}(x) = P(X = x\ |\ A)\\
+- $$p_{X\vert A}(x) = P(X = x\ \vert \ A)\\
 $$
-- $$E[X|A] = \sum\limits_{x}{xp_{X|A}(x)}
+- $$E[X\vert A] = \sum\limits_{x}{xp_{X\vert A}(x)}
 $$
-- $$E[g(X)|A] = \sum\limits_{x}{g(x)p_{X|A}(x)}
+- $$E[g(X)\vert A] = \sum\limits_{x}{g(x)p_{X\vert A}(x)}
 $$
 - total expectation theorem 
-$$E[X]=\sum\limits_{i}{P(A_i)E[X|A_i]}
+$$E[X]=\sum\limits_{i}{P(A_i)E[X\vert A_i]}
   $$
   
  <br>
@@ -187,14 +155,14 @@ $$E[X]=\sum\limits_{i}{P(A_i)E[X|A_i]}
  - conditioning geometric random variable:
    similarly if conditioned on X>n, then X-n is geometric with parameter p
 - memorylessness: conditioning this way result in geometic random variable with parameter p, so
-$$p_{X-n|X>n}(k) = p(T_{n+1}T_{n+2}...T_{k}H_{k+1} | T_1T_2...T_n) = \\
+$$p_{X-n\vert X>n}(k) = p(T_{n+1}T_{n+2}...T_{k}H_{k+1} \vert  T_1T_2...T_n) = \\
 p(T_{n+1}T_{n+2}...T_{k}H_{k+1})=p(k)\\
-\implies p_{X-n|X>n}(k) =p(k)
+\implies p_{X-n\vert X>n}(k) =p(k)
 $$
 - mean of geometric variable
 $$
 E[X] = 1 + E[X-1]\\
-\implies E[X] = 1 + pE(X-1 | X=1) + (1-p)E(X-1|X>1)\\
+\implies E[X] = 1 + pE(X-1 \vert  X=1) + (1-p)E(X-1\vert X>1)\\
 \implies E[X] = 1 + 0 + (1-p)E[X]\\
 \implies E[X] = 1/p
 $$
@@ -229,25 +197,25 @@ X =X_1 + X_2 + ... + X_n\\
 $$
 
 # Conditining pmf with another random variable
-$$p_{X|Y} = \frac{ p_{X,Y}(x,y) }{ p_Y(y) } \quad \text{defined for y: }\quad p_Y(y)\gt 0\\
-p_{X,Y}(x,y) = p_Y(y)p_{X|Y}(x|y)\\
-p_{X,Y}(x,y) = p_X(x)p_{Y|X}(y|x)
+$$p_{X\vert Y} = \frac{ p_{X,Y}(x,y) }{ p_Y(y) } \quad \text{defined for y: }\quad p_Y(y)\gt 0\\
+p_{X,Y}(x,y) = p_Y(y)p_{X\vert Y}(x\vert y)\\
+p_{X,Y}(x,y) = p_X(x)p_{Y\vert X}(y\vert x)
 $$
 - conditioning with more that one r.v.
-$$p_{X|Y,Z} = \frac{ p_{X,Y,Z}(x,y,z) }{ p_{Y,Z}(y,z) }\\
-p_{X,Y|Z} = \frac{ p_{X,Y,Z}(x,y,z) }{ p_{Z}(z) }\\
+$$p_{X\vert Y,Z} = \frac{ p_{X,Y,Z}(x,y,z) }{ p_{Y,Z}(y,z) }\\
+p_{X,Y\vert Z} = \frac{ p_{X,Y,Z}(x,y,z) }{ p_{Z}(z) }\\
 \quad \\
-p_{X,Y,Z}(x,y,z) = p_X(x)\cdot p_{Y|X}(y|x)\cdot p_{Z|X,Y}(z|x,y)
+p_{X,Y,Z}(x,y,z) = p_X(x)\cdot p_{Y\vert X}(y\vert x)\cdot p_{Z\vert X,Y}(z\vert x,y)
 $$
 - more things
-$$E[X|Y] = \sum\limits_{x}xp_{X|Y}(x|y)\\
-E[g(X)|Y] = \sum\limits_{x}g(x)p_{X|Y}(x|y)	\\
-E[X] = \sum\limits_{y}p_Y(y)E[X|Y=y] \quad \text{when sample space partitioned by Y}
+$$E[X\vert Y] = \sum\limits_{x}xp_{X\vert Y}(x\vert y)\\
+E[g(X)\vert Y] = \sum\limits_{x}g(x)p_{X\vert Y}(x\vert y)	\\
+E[X] = \sum\limits_{y}p_Y(y)E[X\vert Y=y] \quad \text{when sample space partitioned by Y}
 $$
 - independece of two r.v.s
 $$
 \quad  P(X=x\ and\ Y=y) = P(X=x)P(Y=y),\\
-p_{X|Y}(x)=p_X(x) \quad \forall x,y\\
+p_{X\vert Y}(x)=p_X(x) \quad \forall x,y\\
 E[XY]= E[X]E[Y]\\
 E[g(X)h(Y)]= E[g(X)]E[h(Y)]
 $$
@@ -319,15 +287,15 @@ $$
 
 # Conditioning continuous r.v.s
 - conditional pdf given an event
-$$f_{X|A}(x)\cdot \delta \approx P(x\leq X \leq x + \delta\ |\ A)\\
-P(X\in B \ |\ A) = \int_{B}{f_{X|A}(x)dx}
+$$f_{X\vert A}(x)\cdot \delta \approx P(x\leq X \leq x + \delta\ \vert \ A)\\
+P(X\in B \ \vert \ A) = \int_{B}{f_{X\vert A}(x)dx}
 $$
 - conditional pdf given $X\in A$
-$$f_{X|X\in A}(x)\cdot \delta \approx P(x\leq X \leq x + \delta\ |\ X\in A)\\
+$$f_{X\vert X\in A}(x)\cdot \delta \approx P(x\leq X \leq x + \delta\ \vert \ X\in A)\\
 \text{if x is in the interval A then }\\
-f_{X|X\in A}(x)\cdot \delta =  \frac{P(x\leq X \leq x + \delta\ )}{ P(A) } = \frac{f_X(x)}{P(A)}\\
+f_{X\vert X\in A}(x)\cdot \delta =  \frac{P(x\leq X \leq x + \delta\ )}{ P(A) } = \frac{f_X(x)}{P(A)}\\
 \ \\
-\text{so } f_{X|X\in A}(x)\cdot \delta = \begin{cases}
+\text{so } f_{X\vert X\in A}(x)\cdot \delta = \begin{cases}
 	0, & \text{if } x\notin A\\    
 	\frac{f_X(x)}{P(A)}, &  \text{if } x\in A
 	\end{cases}\\
@@ -338,7 +306,7 @@ $$
 $$P(T\gt x) = e^{-\lambda x} \text{ for } x\geq 0\\
 \text{if we are told that } T\gt t,\\
 \text{ then r.v. } X = \text{ remaining lifetime } = T - t\\
-P(X\gt x\ |\ T\gt t) = e^{-\lambda x}
+P(X\gt x\ \vert \ T\gt t) = e^{-\lambda x}
 $$
 <br>
 
@@ -354,7 +322,7 @@ F_X(x) = p\cdot P(Y\leq x) + (1-p)\cdot P(Z\leq x)\\
 \ \\
 E_X[x] =  pE_Y[x] + (1-p)E_Z[x]
 $$
-![ea2ef34fb3b96888c0fafb90f5e25378.png](../_resources/ea2ef34fb3b96888c0fafb90f5e25378.png)
+![ea2ef34fb3b96888c0fafb90f5e25378.png](/assets/images/ea2ef34fb3b96888c0fafb90f5e25378.png)
 
 
 # Joint continuous r.v.s
@@ -387,26 +355,26 @@ F_{X,Y}(x,y) = P(X\leq x,Y\leq y) = \int_{-\infty}^{x}  \int_{-\infty}^{y} f_{X,
 $$
 
 # Conditining pdf of one r.v. with another r.v.
-$$f_{X|Y}(x|y) = \frac{f_{X,Y}(x,y)}{f_Y(y)} \quad f_Y(y) \gt 0\\
-P(x\leq X\leq x+\delta\ |\ y\leq Y\leq y+\epsilon ) \approx \frac{f_{X,Y}(x,y)\delta\epsilon}{f_Y(y)\epsilon} = f_{X|Y}(x|y)\delta\\
-P(X\in A\ |\ Y = y) = \int_A f_{X|Y}(x|y)dx
+$$f_{X\vert Y}(x\vert y) = \frac{f_{X,Y}(x,y)}{f_Y(y)} \quad f_Y(y) \gt 0\\
+P(x\leq X\leq x+\delta\ \vert \ y\leq Y\leq y+\epsilon ) \approx \frac{f_{X,Y}(x,y)\delta\epsilon}{f_Y(y)\epsilon} = f_{X\vert Y}(x\vert y)\delta\\
+P(X\in A\ \vert \ Y = y) = \int_A f_{X\vert Y}(x\vert y)dx
 $$
 - mulitplication rule
-$$f_{X,Y}(x,y) = f_Y(y)f_{X|Y}(x|y) = f_X(x)f_{Y|X}(y|x)
+$$f_{X,Y}(x,y) = f_Y(y)f_{X\vert Y}(x\vert y) = f_X(x)f_{Y\vert X}(y\vert x)
 $$
 - total probability and expectation theorem
-$$f_X(x) = \int_{-\infty}^{\infty}f_Y(y)f_{X|Y}(x|y)dy\\
-E[X|Y = y] = \int_{-\infty}^{\infty}xf_{X|Y}(x|y)dx\\
-E[X] = \int_{-\infty}^{\infty}f_Y(y)E[X|Y = y] dy
+$$f_X(x) = \int_{-\infty}^{\infty}f_Y(y)f_{X\vert Y}(x\vert y)dy\\
+E[X\vert Y = y] = \int_{-\infty}^{\infty}xf_{X\vert Y}(x\vert y)dx\\
+E[X] = \int_{-\infty}^{\infty}f_Y(y)E[X\vert Y = y] dy
 $$
-- expected value of $g(X)|Y = y$
-$$E[g(X)|Y = y] = \int_{-\infty}^{\infty}g(x)f_{X|Y}(x|y)dx
+- expected value of $g(X)\vert Y = y$
+$$E[g(X)\vert Y = y] = \int_{-\infty}^{\infty}g(x)f_{X\vert Y}(x\vert y)dx
 $$
 <br>
 
 - independence
 $$f_{X,Y}(x,y) = f_X(x)f_Y(y)\quad \forall x,y\\
-f_{X|Y}(x|y) = f_X(x) \quad \forall y \text{ with } f_Y(y)\gt 0 \text{ and } \forall x
+f_{X\vert Y}(x\vert y) = f_X(x) \quad \forall y \text{ with } f_Y(y)\gt 0 \text{ and } \forall x
 $$
 - if $X,Y$ are independent then
 	- $E[X,Y] = E[X] + E[Y]$

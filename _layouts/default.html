@@ -16,6 +16,56 @@
     integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
     crossorigin="anonymous"></script>
   <link rel="shortcut icon" href="{{ '/assets/images/favicon.ico' | prepend: site.baseurl }}" type="image/x-icon" />
+  <!--<script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>-->
+
+  <script 
+    type="text/javascript"
+    src="https://unpkg.com/mermaid@8.13.2/dist/mermaid.min.js">
+</script>
+
+<link 
+  rel="stylesheet" 
+  href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+
+<script defer 
+  src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous">
+</script>
+
+<script defer 
+  src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous">
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\[', right: '\\]', dispaly: true},
+              {left: '\\(', right: '\\)', dispaly: false}
+          ],
+          throwOnError : true
+        });
+    });
+    a = document.getElementById("main_content")
+    console.log(a)
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(a, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\[', right: '\\]', dispaly: true}
+          ],
+          throwOnError : true
+        });
+    });
+</script>
+    <!-- dasd-->
   <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
   <link rel="stylesheet" href="{{ "/assets/css/prism.css" | prepend: site.baseurl }}">
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
@@ -45,18 +95,18 @@
     <div class="container">
       <div class="title-container">
         <a id="a-title" href="{{ '/' | relative_url }}">
-          <h1>{{ page.title | default: site.github.repository_name }}</h1>
+          <h1>{{ site.title | default: site.github.repository_name }}</h1>
         </a>
         {% include navbar.html %}
       </div>
       <br>
 
-      {% if page.layout == 'blog' %}
-      {% include blog_navlinks.html isSidebar=true %}
+      {% if page.layout == 'writeup' %}
+      {% include writeup_navlinks.html isSidebar=true %}
       {% endif %}
 
-      {% if page.layout == 'note' %}
-      {% include note_navlinks.html isSidebar=true %}
+      {% if page.layout == 'solution' %}
+      {% include solution_navlinks.html isSidebar=true %}
       {% endif %}
       <div id="bottom-bar">
         {% include social_links.html %}

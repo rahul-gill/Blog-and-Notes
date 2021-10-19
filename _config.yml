@@ -26,12 +26,14 @@ markdown: kramdown
 kramdown:
    syntax_highlighter_opts:
       disable : false
+   math_engine: nil
 
 plugins:
    - jekyll-seo-tag
    - jemoji
    - jekyll-sitemap
    - jekyll-github-metadata
+   - jekyll-katex
 collections:
    pages:
       output: true
@@ -42,3 +44,10 @@ collections:
    blogs:
       output: true
       permalink: /:collection/:year/:name
+
+defaults:
+   -  scope:
+         path: /assets/images
+      values:
+         image: true
+         permalink: /images/:name

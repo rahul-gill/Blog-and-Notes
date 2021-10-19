@@ -3,6 +3,13 @@ layout: default
 name: RahulGill
 ---
 
+
+{% assign image_files = site.static_files | where: "image", true %}
+{% for myimage in image_files %}
+  {{ myimage.path }}
+{% endfor %}
+
+
 Hello guys, I'm Rahul Gill.
 
 My Projects:

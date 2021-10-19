@@ -29,8 +29,23 @@ date: 2021-10-19
               {left: '$$', right: '$$', display: true},
               {left: '$', right: '$', display: false},
               {left: '\[', right: '\]', dispaly: true}
+              {left: '\(', right: '\)', dispaly: false}
           ],
-          throwOnError : false
+          throwOnError : true
+        });
+    });
+    a = document.getElementById("main_content")
+    console.log(a)
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(a, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\[', right: '\]', dispaly: true}
+          ],
+          throwOnError : true
         });
     });
 </script>
@@ -95,11 +110,9 @@ void build_max_heap(vector<int> &arr){
 
 $$
 \sum\limits_{i=n/2}^{n}i\cdot {\mathcal{O} (h)} =  \sum\limits_{h=0}^{\lfloor lgn \rfloor} \lceil{ \frac{n}{2^{h+1}} \rceil}\mathcal{O} (h)
- = \mathcal{O}( n \sum\limits_{h=0}^{\lfloor lgn \rfloor} {\frac{h}{2^h}} )\\
- \text{here } \sum\limits_{h=0}^{\infty}  {\frac{h}{2^h}} = 2 \text{ because } \sum\limits_{k=0}^{\infty}  {kx^k} = \frac{x}{(1-x)^2} \text{ for } |x| \lt 1\\
- \text{so the cost is} = \mathcal{O}(n) 
-
-$$
+= \mathcal{O}( n \sum\limits_{h=0}^{\lfloor lgn \rfloor} {\frac{h}{2^h}} )\\
+\text{here } \sum\limits_{h=0}^{\infty}  {\frac{h}{2^h}} = 2 \text{ because } \sum\limits_{k=0}^{\infty}  {kx^k} = \frac{x}{(1-x)^2} \text{ for } |x| \lt 1\\
+\text{so the cost is} = \mathcal{O}(n)$$
 
 - **HEAP_SORT**:extract max element, put it in the last and reduce heap_size by 1; cost is $\mathcal{O} (n\lg n)$
 
@@ -207,17 +220,12 @@ int partition(vector<int> &arr, int l,int r){
 
 - worst-case paritioning: when one subproblem have 0 elements and other have n-1(array is already sorted) then
 
-$$
-T(n) = T(n-1) + T(0) + \Theta(n) = \Theta(n^2)
-
-$$
+$$T(n)=T(n-1)+T(0)+\Theta(n)=\Theta(n^2)$$
 
 - best-case
 
 $$
-T(n) =  	2T(n/2) + \Theta(n) = \Theta(n\lg n)
-
-$$
+T(n) =  	2T(n/2) + \Theta(n) = \Theta(n\lg n)$$
 
 - you'll see that even if partitions have size ratios 1:9, the running time is $\mathcal{O}(n\lg n)$ and there is more than 80% chance of the partitioning being better than the 1:9 ratio
 - expected running time if one partition contain q elements

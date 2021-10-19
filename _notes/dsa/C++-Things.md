@@ -29,8 +29,23 @@ date: 2021-10-19
               {left: '$$', right: '$$', display: true},
               {left: '$', right: '$', display: false},
               {left: '\[', right: '\]', dispaly: true}
+              {left: '\(', right: '\)', dispaly: false}
           ],
-          throwOnError : false
+          throwOnError : true
+        });
+    });
+    a = document.getElementById("main_content")
+    console.log(a)
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(a, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\[', right: '\]', dispaly: true}
+          ],
+          throwOnError : true
         });
     });
 </script>
