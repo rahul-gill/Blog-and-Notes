@@ -30,7 +30,6 @@ date: 2021-10-19
               {left: '$', right: '$', display: false},
               {left: '\[', right: '\]', dispaly: true}
           ],
-          // • rendering keys, e.g.:
           throwOnError : false
         });
     });
