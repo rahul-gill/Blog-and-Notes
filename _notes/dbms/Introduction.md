@@ -4,36 +4,6 @@ name: _notes/dbms/Introduction.md
 categories: Databases
 date: 2021-10-19
 ---
-<script 
-    type="text/javascript"
-    src="https://unpkg.com/mermaid@8.13.2/dist/mermaid.min.js">
-</script>
-
-<link 
-  rel="stylesheet" 
-  href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
-
-<script defer 
-  src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous">
-</script>
-
-<script defer 
-  src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous">
-</script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(document.body, {
-          // customised options
-          // • auto-render specific keys, e.g.:
-          delimiters: [
-              {left: '$$', right: '$$', display: true},
-              {left: '$', right: '$', display: false},
-              {left: '\[', right: '\]', dispaly: true}
-          ],
-          throwOnError : false
-        });
-    });
-</script>
 ${toc}
 # Introduction
 
@@ -125,7 +95,7 @@ flowchart TD;
 
 # DBMS Architecture
 
-![13c07049b30afb5f6af6ce491a7c8d6e.png](../_resources/13c07049b30afb5f6af6ce491a7c8d6e.png)
+![13c07049b30afb5f6af6ce491a7c8d6e.png](/assets/images/13c07049b30afb5f6af6ce491a7c8d6e.png)
 
 ## Two and Three Tier Architecture
 
@@ -196,17 +166,17 @@ flowchart TD;
 
 ### E-R diagrams
 
-![803c9aa508fb67dffb877a201e19474b.png](../_resources/803c9aa508fb67dffb877a201e19474b.png)
-![68c30ba27b066d704e1f42571d1ef2a2.png](../_resources/68c30ba27b066d704e1f42571d1ef2a2.png)
-![01eef20549680b40ef3a15267d6d1cc6.png](../_resources/01eef20549680b40ef3a15267d6d1cc6.png)
+![803c9aa508fb67dffb877a201e19474b.png](/assets/images/803c9aa508fb67dffb877a201e19474b.png)
+![68c30ba27b066d704e1f42571d1ef2a2.png](/assets/images/68c30ba27b066d704e1f42571d1ef2a2.png)
+![01eef20549680b40ef3a15267d6d1cc6.png](/assets/images/01eef20549680b40ef3a15267d6d1cc6.png)
 
 ### Unified Modeling language(UML)
 
-![163708206d03e0c9ecd51ad87c593e6b.png](../_resources/163708206d03e0c9ecd51ad87c593e6b.png)
+![163708206d03e0c9ecd51ad87c593e6b.png](/assets/images/163708206d03e0c9ecd51ad87c593e6b.png)
 
 ### Relationships with degree >2
 
-![1595b79130d0e69ca777e77c755fe29b.png](../_resources/1595b79130d0e69ca777e77c755fe29b.png)
+![1595b79130d0e69ca777e77c755fe29b.png](/assets/images/1595b79130d0e69ca777e77c755fe29b.png)
 
 # Relational Model
 
@@ -259,9 +229,9 @@ flowchart TD;
 - **step 4**: multi-valued attributes: create a new relation containing the primary key as foreign key R of table that containing this multi-valued attribute, and the value A of attribute. R and A makes the primary key for this relation
 - **step 5**: n-ary relationships: create a new relationship relation with primary keys of participating relations as foreign keys and include attribtes of the relationship as simple attributes. Combination of foreign keys makes up the primary key
 - example
-![fd85a482dd35babab05f2e2bba3264af.png](../_resources/fd85a482dd35babab05f2e2bba3264af.png)
+![fd85a482dd35babab05f2e2bba3264af.png](/assets/images/fd85a482dd35babab05f2e2bba3264af.png)
 is mapped to 
-![80d7a80cb801af756f1159d4e0c19fcb.png](../_resources/80d7a80cb801af756f1159d4e0c19fcb.png)
+![80d7a80cb801af756f1159d4e0c19fcb.png](/assets/images/80d7a80cb801af756f1159d4e0c19fcb.png)
 - summary
 
 |ER Model| Relational Model|
