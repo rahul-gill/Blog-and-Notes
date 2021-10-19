@@ -1,7 +1,7 @@
 ---
 layout: default
-name: _notes/android/4.Dependency injection with Hilt.md
-categories: Android
+name: _notes/dsa/Links.md
+categories: DSA
 date: 2021-10-19
 ---
 <script 
@@ -34,33 +34,24 @@ date: 2021-10-19
         });
     });
 </script>
-- create an annotated application class and add its name to manifest
-```kotlin
-@HiltAndroidApp
-class MyApplication: Application()
-```
+https://www.cut-the-knot.org/
 
-- create a new package di and add a class `AppModule`
-```kotlin
-@Module
-@InstallIn(ApplicationComponent::class)
-object AppModule{
-	//example for providing glide
-	@Singleton
-	@Provides
-	fun provideGlideInstance(
-		@ApplicationContext context: Context
-	) = Glide.with(context).setDefaultRequestOptions(
-		RequestOptions()
-			.placeholder(R.drawable.ic_image_for_not_loaded_image)
-			.error(R.drawable.ic_image_when_error_occur)
-			.diskCacheStrategy(DiskCacheStrategy.DATA)
-	)
-}
-```
-- add these packages according to lifecycle needs
+- Lame's Theorem
+- [chicken nugget theorem](https://brilliant.org/wiki/postage-stamp-problem-chicken-mcnugget-theorem/)
+- Erdős–Szekeres theorem
 
-- then in the component in which injection is to be done, annotate that with
+
+# Practice Routine
 ```
-@AndroidEntryPoint
+3hours a day
+
+timing:
+	div2A:	thinkMax:30min,	codingMax:30min
+	div2B:	thinkMax:45min,	codingMax:30min
+	div2C:	thinkMax:60-90min
+	div2D:	thinkMax:600-120min(~10% 3-4hours)
+WA 
+	struggle for at least 15-30minutes
+	if you can make brute force, check on random test cases
+	otherwise check the testcases
 ```

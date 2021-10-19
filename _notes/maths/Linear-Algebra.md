@@ -1,7 +1,7 @@
 ---
 layout: default
-name: _notes/android/4.Dependency injection with Hilt.md
-categories: Android
+name: _notes/maths/Linear Algebra.md
+categories: Mathematics
 date: 2021-10-19
 ---
 <script 
@@ -34,33 +34,4 @@ date: 2021-10-19
         });
     });
 </script>
-- create an annotated application class and add its name to manifest
-```kotlin
-@HiltAndroidApp
-class MyApplication: Application()
-```
-
-- create a new package di and add a class `AppModule`
-```kotlin
-@Module
-@InstallIn(ApplicationComponent::class)
-object AppModule{
-	//example for providing glide
-	@Singleton
-	@Provides
-	fun provideGlideInstance(
-		@ApplicationContext context: Context
-	) = Glide.with(context).setDefaultRequestOptions(
-		RequestOptions()
-			.placeholder(R.drawable.ic_image_for_not_loaded_image)
-			.error(R.drawable.ic_image_when_error_occur)
-			.diskCacheStrategy(DiskCacheStrategy.DATA)
-	)
-}
-```
-- add these packages according to lifecycle needs
-
-- then in the component in which injection is to be done, annotate that with
-```
-@AndroidEntryPoint
-```
+${toc}

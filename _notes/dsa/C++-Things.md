@@ -1,7 +1,7 @@
 ---
 layout: default
-name: _notes/android/4.Dependency injection with Hilt.md
-categories: Android
+name: _notes/dsa/C++ Things.md
+categories: DSA
 date: 2021-10-19
 ---
 <script 
@@ -34,33 +34,50 @@ date: 2021-10-19
         });
     });
 </script>
-- create an annotated application class and add its name to manifest
-```kotlin
-@HiltAndroidApp
-class MyApplication: Application()
+# GCC built-ins
+```
+int  __builtin_popcount(unsigned int x)//returns number of 1's in x
+```
+```
+int  __builtin_parity(unsigned int x)//parity = (number of 1's) % 2
+```
+```
+int  __builtin_clz(unsigned int x) //count leading zeros(put l or ll for long)
+```
+```
+int  __builtin_ctz(unsigned int x) //count trailing zeros
+```
+```
+int  __builtin_ffs(int x) //least significant 1 bit position + 1
 ```
 
-- create a new package di and add a class `AppModule`
-```kotlin
-@Module
-@InstallIn(ApplicationComponent::class)
-object AppModule{
-	//example for providing glide
-	@Singleton
-	@Provides
-	fun provideGlideInstance(
-		@ApplicationContext context: Context
-	) = Glide.with(context).setDefaultRequestOptions(
-		RequestOptions()
-			.placeholder(R.drawable.ic_image_for_not_loaded_image)
-			.error(R.drawable.ic_image_when_error_occur)
-			.diskCacheStrategy(DiskCacheStrategy.DATA)
-	)
+# c++ features
+
+- constexpr for computing at compile time
+
+```
+constexpr int cube (int a){return a * a * a;}
+float gk[cube(3)]; // Valid since C++11: variable 'gk' has 27 elements
+```
+
+- lambdas
+
+```
+[scope](params){body}
+scope is either empty, & or =
+
+std::function<float(float, float)> returnLambda(){
+    return [](float a, float b) {return a + b;};
+}
+int main(){
+    auto lmbda = returnLambda();
+    std::cout << lmbda(8.2, 6.4) << std::endl;
 }
 ```
-- add these packages according to lifecycle needs
 
-- then in the component in which injection is to be done, annotate that with
+- rvalue references
+- structured bindings
+
 ```
-@AndroidEntryPoint
+auto [var1, var2] = make_tuple(1,2);//tuples,pairs,structs etc.
 ```
