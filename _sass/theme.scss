@@ -28,6 +28,9 @@ $blockquote-border: $dove-grey !default;
 code[class*="language-"],
 pre[class*="language-"] {
   font-family: "Cascadia Code" !important;
+  font-size: 0.9em !important;
+  height: auto;
+  max-height: none;
 }
 
 html {
@@ -39,7 +42,7 @@ body {
   margin: 0;
   padding: 0;
   overflow-y: overlay;
-  background: $body-background url("../images/bkg.png") 0 0;
+  background: $body-background url("/assets/images/bkg.png") 0 0;
   color: $body-foreground;
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
 }
@@ -140,7 +143,7 @@ footer {
 */
 
 #main_content, #disqus_container {
-  width: 70%;
+  width: 90%;
   margin-left: 5%;
   margin-bottom: 0px !important;
   float: left;
@@ -207,7 +210,7 @@ dt {
 }
 
 ul li {
-  list-style-image:url('../images/bullet.png');
+  list-style-image:url('assets/images/bullet.png');
 }
 
 blockquote {
@@ -308,7 +311,7 @@ input:focus, .btn:active {
 
 .btn-github .icon {
   opacity: 0.6;
-  background: url("../images/blacktocat.png") 0 0 no-repeat;
+  background: url("/assets/images/blacktocat.png") 0 0 no-repeat;
 }
 
 #top {

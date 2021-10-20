@@ -1,8 +1,8 @@
 ---
-layout: default
-name: _notes/maths/Probability.md
+layout: note
+name: Probability
 categories: Mathematics
-date: 2021-10-19
+date: 2021-10-20
 ---
 ${toc}
 

@@ -1,8 +1,8 @@
 ---
-layout: default
-name: _notes/dbms/Contents.md
+layout: note
+name: Contents
 categories: Databases
-date: 2021-10-19
+date: 2021-10-20
 ---
 1. [Introduction](../Databases/Introduction.md)
 2. [SQL](../Databases/SQL.md)

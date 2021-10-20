@@ -1,8 +1,8 @@
 ---
-layout: default
-name: _notes/dbms/Relational Algebra.md
+layout: note
+name: Relational Algebra
 categories: Databases
-date: 2021-10-19
+date: 2021-10-20
 ---
  - relational algebra defines a set of operations for the relational model(gives operational description of a computation, on entire tables(sets of tuples), not on indivisual tuples or cells in them)
  - the relational calculus provides a higher-level declarative language for specifying relational queries(just like sql). One example $\{S\ | \ S\in Sailors\ \exist R\in Reserves\ (R.sid= S.sid \land R.bid = 103) \}$

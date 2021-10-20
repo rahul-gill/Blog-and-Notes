@@ -1,8 +1,8 @@
 ---
-layout: default
-name: _notes/dbms/NoSQL.md
+layout: note
+name: NoSQL
 categories: Databases
-date: 2021-10-19
+date: 2021-10-20
 ---
 # NoSQL Properties
 ## Distributed database related properties

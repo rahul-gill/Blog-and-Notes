@@ -1,8 +1,8 @@
 ---
-layout: default
-name: _notes/dsa/Combinatorics.md
+layout: note
+name: Combinatorics
 categories: DSA
-date: 2021-10-19
+date: 2021-10-20
 ---
 # Counting
 - **basic counting principle**: $r$ stages with $n_i$ choices at state $i$; the total number of choices are $n_1\cdot n_2\cdot n_3\cdot ...\cdot n_r$

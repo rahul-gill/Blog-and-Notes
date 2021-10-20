@@ -1,8 +1,8 @@
 ---
-layout: default
-name: _notes/dsa/Advanced Data Structures.md
+layout: note
+name: Advanced Data Structures
 categories: DSA
-date: 2021-10-19
+date: 2021-10-20
 ---
 - [Segment Trees](#segment-trees)
     - [memory efficient implementation](#memory-efficient-implementation)
@@ -47,7 +47,7 @@ date: 2021-10-19
 - basic implementation
     
 
-```c++
+```cpp
 class SegmentTree{
 private:
     int n, maxN, segTree[4*maxN];
@@ -105,7 +105,7 @@ public:
 
 - [video tutorial](https://youtu.be/Oq2E2yGadnU)
 
-```c++
+```cpp
 class SegmentTree {
 public:
     SegmentTree(int count) {
@@ -167,7 +167,7 @@ private:
     
     - finding the $k^{th}$ zero
     
-    ```c++
+```cpp
     int find_kth(int v, int tl, int tr, int k) {
         if (k > t[v]) return -1;
         if (tl == tr) return tl;
@@ -219,7 +219,7 @@ private:
     - can update its elements in $\mathcal{O}(\log{}n)$ time
 - [explaination video](https://www.youtube.com/watch?v=uSFzHCZ4E-8)
 
-```c++
+```cpp
 template<typename T> class FenwickTree {
 private:
     vector<T> ftree;
@@ -260,7 +260,7 @@ public:
 
 - almost O(1) operations: do union of sets, find the set of an item
 
-```c++
+```cpp
 class UnionFind {                              
 private:
     vector<int> p, rank, setSize;                       

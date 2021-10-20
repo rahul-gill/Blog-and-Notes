@@ -1,8 +1,8 @@
 ---
-layout: default
-name: _notes/dsa/Mathematics.md
+layout: note
+name: Mathematics
 categories: DSA
-date: 2021-10-19
+date: 2021-10-20
 ---
 ${toc}
 
@@ -16,7 +16,7 @@ $$\text{so } x^n  = \begin{cases}
 	\end{cases}\\
 $$
 - implementation
-```c++
+```cpp
 //calculating (base^index) mod m
 //for (base^index) without mod, remove all the applied mods in algorithm
 //after ith iteration: base = base^i, index = index/2^i, if index's lowest bit is on, result is multiplied by base^i
@@ -35,7 +35,7 @@ long long binexp(long long base, long long index, long long m){
 # Euclidian Algorithm for GCD & LCM O(log<sub>10</sub>min(a,b))
 
 
-```c++
+```cpp
 //use __gcd(c++17 has both inbuilt gcd() and lcm() in numeric header)
 long long gcd(long long a, long long b){
     while(b){
@@ -72,7 +72,7 @@ its clear that $p_i>0$ because $b_{i+1} > b_i$, so for same starting values of $
 - if one in even and other odd, remove even's 2<sup>i</sup>
 - if both are odd then bigger = bigger - smaller
 
-```c++
+```cpp
 long long gcd(long long a, long long b) {
     if (!a || !b)
         return a | b;
@@ -99,7 +99,7 @@ $b\cdot x_1 + (a-\lfloor \frac{a}{b}\rfloor)\cdot y = g$
 doing some hard work we'll have
 $x = y_1,y = x_1-y_1\cdot \lfloor \frac{a}{b}\rfloor$
 
-```c++
+```cpp
 int extended_gcd(int a, int b, int& x, int& y) {
     if (b == 0) {
         x = 1, y = 0;
@@ -128,7 +128,7 @@ $gcd(a,b) = gcd(r_0,r_1)= gcd(r_1,r_2)= ... = gcd(r_{n-2},0) = r_{n-2}$
 $\implies gcd(a,b) =  r_{n-2} = s_{n-2}a + t_{n-2}b$
 
 In the equation $r_i = r_{i-2} - r_{i-1}q_i$, `x,y` plays the role of $s_{i-2},t_{i-2}$ and `x1,y2` plays the role of $s_{i-1},t_{i-1}$
-```c++
+```cpp
 int extended_gcd(int a, int b, int& x, int& y) {
     x = 1, y = 0;
     int x1 = 0, y1 = 1;
@@ -147,7 +147,7 @@ int extended_gcd(int a, int b, int& x, int& y) {
 - $a = 0; b = 0$ is a degenerate case
 ### One solution
 - its straight forward that solution exists when $c$ is divible by $gcd(a,b)$ because linear combination of two numbers is divible by their gcd
-```c++
+```cpp
 bool find_any_solution (int a, int b, int c, int &x0, int &y0) {
 	int g = extended_gcd(abs(a), abs(b), x0, y0);
 	if (c % g) return false;
@@ -182,7 +182,7 @@ x_{min} \leq x_{0} + k\cdot \frac{b}{g} \leq x_{max}\\
 \implies \frac{x_{min} - x_{0}}{b} \leq k \leq \frac{x_{max} - x_{0}}{b}\: since\: g=1
 $$
 since $k$ takes integers values
-```c++
+```cpp
 void shift_solution(int & x, int & y, int a, int b, int cnt) {
     x += cnt * b;
     y -= cnt * a;
@@ -309,7 +309,7 @@ we have
 $F_{2k} = F_{k}(2F_{k+1} - F_{k})$
 $F_{2k+1} = F_{k+1}^2+ F_{k}^2$
 - this way we can find Fibonacci numbers with $\mathcal{O}(\lg n)$ cost, same as matrix binary multiplication but better
-```c++
+```cpp
 pair<int, int> fib (int n) {
 	if (n == 0)
 		return {0, 1};
@@ -331,7 +331,7 @@ $$\lim\limits_{x\to \infty} \frac{\pi(x)}{x/\log(x) }=1 \quad\text{or}\quad \pi(
 - this is equivalent to saying that for $n^{th}$ prime number $p_n$
 $p_n\sim n\log n$
 ## sieve of eratosthenes
-```c++
+```cpp
 int n;
 vector<bool> is_prime(n+1, true);
 is_prime[0] = is_prime[1] = false;
@@ -357,7 +357,7 @@ so algorithm complexity
 		 3. `vector<char>` consume more memory(8x) but `vector<bool>` has read/write overhead; with usual sieve, `vector<bool>` is faster because we're limited by how fast we load in cache. But with segmented sieve, `vector<char>` gives advantage.
 ##  Segmented Sieve
 - we count all primes blockwise for cache efficiency
-```c++
+```cpp
 int count_primes(int n) {
     const int S = 10000;//block size
     vector<int> primes;
@@ -394,7 +394,7 @@ int count_primes(int n) {
 }
 ```
 - chosing the starting index to mark `false` in the block:
-```c++
+```cpp
 int start_index = (start/p)*p;
 if(start_index < start) start_index += p;
 int j = max(start_index,p*p) - start;
@@ -403,7 +403,7 @@ int start_idx = (start + p - 1) / p;
 int j = max(start_idx, p) * p - start;
 ```
 - primes in a range: just modify the second part of segmented sieve
-```c++
+```cpp
 vector<char> segmentedSieve(long long L, long long R) {
 	// generate all primes up to sqrt(R)
 	long long lim = sqrt(R);
@@ -427,7 +427,7 @@ vector<char> segmentedSieve(long long L, long long R) {
 }
 ```
 - primes in a range with not pre generating primes; cost $\mathcal{O}((R-L-1)\log R)$, but fast enough in practice
-```c++
+```cpp
 vector<char> segmentedSieveNoPreGen(long long L, long long R) {
     vector<char> isPrime(R - L + 1, true);
     long long lim = sqrt(R);

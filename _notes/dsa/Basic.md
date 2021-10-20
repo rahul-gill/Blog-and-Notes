@@ -1,8 +1,8 @@
 ---
-layout: default
-name: _notes/dsa/Basic.md
+layout: note
+name: Basic
 categories: DSA
-date: 2021-10-19
+date: 2021-10-20
 ---
 - [Heaps and priority queue](#heaps-and-priority-queue)
     - [Basic Procedures for heaps](#basic-procedures-for-heaps)
@@ -34,7 +34,7 @@ date: 2021-10-19
 
 - **MAX_HEAPIFY**: if a node violates max-heap property but its children are max-heaps, then it makes the node float down to its appropriate position with $\mathcal{O}(\text{height of node})$ cost
 
-```c++
+```cpp
 int heap_size;
 
 void max_heapify(vector<int> &arr, int i){
@@ -54,7 +54,7 @@ void max_heapify(vector<int> &arr, int i){
     - since second half of the array contain leaves of heap, which are one-element heaps so we call `max_heapify` on rest element in down-up manner
     - exactly $A[\frac{n}{2},n]$(0-indexed) are leaves so i here can be started with `arr.size()/2 - 1`
 
-```c++
+```cpp
 void build_max_heap(vector<int> &arr){
     heap_size = arr.size();
     for(int i = arr.size()/2; i>=0; i--) max_heapify(arr, i);
@@ -71,7 +71,7 @@ $$
 
 - **HEAP_SORT**:extract max element, put it in the last and reduce heap_size by 1; cost is $\mathcal{O} (n\lg n)$
 
-```c++
+```cpp
 void heap_sort(vector<int> &arr){
     build_max_heap(arr);
 
@@ -92,7 +92,7 @@ void heap_sort(vector<int> &arr){
     - `INCREASE_KEY(x,k)` set element x's key equal to k assuming k is not less than x's current key
 - we can chanage the element type from `int` to `pair<int,pointer_to_stored_object>` to have key-value pairs instead of just keys; pointer will make swapping element indexes easier(sizeof(ptr) = 8, sizeof(object) can be > 8)
 
-```c++
+```cpp
 int heap_max(vector<int> &arr){	//O(1)
     return arr[0];
 }
@@ -122,7 +122,7 @@ void heap_insert(vector<int> &arr, int key){
 
 - STL
 
-```c++
+```cpp
 //priority_queue default signature:
 priority_queue<typename _T, typename _seq = vector<_T>, typename _compare = less<_seq::value_type>>
 //max heap
@@ -140,7 +140,7 @@ priority_queue<int, vector<int>, greater<int>>
     - sort the subarrays recursively
     - no need to combine the results
 
-```c++
+```cpp
 void quick_sort(vector<int> &arr, int l = 0,int r = INT_MIN){
     if(r == INT_MIN) r = arr.size();
     if(l >= r) return;
@@ -152,7 +152,7 @@ void quick_sort(vector<int> &arr, int l = 0,int r = INT_MIN){
 
 - random partitioning
 
-```c++
+```cpp
 int partition(vector<int> &arr, int l,int r){
     int ramdom_index = l + (rand() % (r-l));
     swap(arr[ramdom_index], arr[r-1]);
@@ -229,7 +229,7 @@ $$
 
 - assumes that keys of elements are in range 0 to k, cost $\mathcal{O}(n+k)$. When $k=\mathcal{O}(n)$, time complexity is also $\mathcal{O}(n)$
 
-```c++
+```cpp
 //sorting array containing only integer keys, max_key exclusive
 vector<int> rapid_sort(const vector<int> &arr, int max_key){
     vector<int> count(max_key, 0), ret_array(arr.size());
@@ -271,7 +271,7 @@ vector<int> count_sort(const vector<int> &arr, int max_key){
 - for n d-digit numbers with each digit having k possible values, RadixSort takes $\mathcal{O}(d(n+k))$ if the stable sort its using is $\mathcal{O}(n+k)$
 - when d is constant and k is of order n, then it sots in linear time
 
-```c++
+```cpp
 //modified count sort
 void count_sort(vector<int> &arr, int max_key,int factor){
     vector<int> count(max_key, 0);
@@ -306,7 +306,7 @@ void radix_sort(vector<int> &arr){
 - have average case running time $\mathcal{O}(n)$
 - this implementation for range $[0,1)$
 
-```c++
+```cpp
 void bucket_sort(vector<double> &arr){
     vector<vector<double>> buckets(arr.size());
     int n = arr.size();
@@ -356,7 +356,7 @@ $$
     - sort and return $i^{th}$ element $\mathcal{O}(n\lg n)$
     - we can use a heap: with STL, we'll create priority_queue with first i elements of array, then for other elements, if the element if smaller than pq's top then remove the top and push the element. After doing it for whole array the top of pq will be the answer. $\mathcal{O}(i + (n-i)\lg k)$: first building i-element heap with linear complexity then (n-k) push-pops with logorithmic complexity
 
-```c++
+```cpp
 int tofindKthSmallest(vector<int> const &v, int k){
     priority_queue<int, vector<int>> pqueue(v.begin(), v.begin() + k);
     
@@ -495,7 +495,7 @@ $$
 
 ## C++ implementation
 
-```c++
+```cpp
 //Bob Jenkins
 int joaat_hash(char *key, int len){
     int hash = 0, i;

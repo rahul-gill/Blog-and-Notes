@@ -1,8 +1,8 @@
 ---
-layout: default
-name: _notes/dsa/Graph I_ Traversal.md
+layout: note
+name: Graph I_ Traversal
 categories: DSA
-date: 2021-10-19
+date: 2021-10-20
 ---
 ${toc}
 
@@ -10,7 +10,7 @@ ${toc}
 
 ## DFS and BFS
 
-```c++
+```cpp
 //the true entries in visited array denotes a connected component; that can be used for getting connected components
 vector<vector<int>> adj_list;
 int V;//number of vertices
@@ -41,7 +41,7 @@ void bfs(int v){
 
 ## Flood Fill
 
-```c++
+```cpp
 vector<vector<char>> grid = {
     {'#','#','#','#','#','#'},
     {'#','$','$','$','#','#'},
@@ -72,7 +72,7 @@ int floodfill(int r, int c, char c1, char c2){
 - DAG: directed graph that will never form loops
 - topological sort: vertices ordering such that for every edge u->v u comes before v in the ordering
 
-```c++
+```cpp
 vector<vector<int>> adj_list;
 int V;
 
@@ -102,7 +102,7 @@ void topological_sort(){
 
 ### Kahn's Algorithm(topological sort BFS style)
 
-```c++
+```cpp
 vector<vector<int>> adj_list;
 int V;
 void kahn_topological_sort(){
@@ -135,7 +135,7 @@ void kahn_topological_sort(){
 
 - bipartite graph: such graph that can be divided into two disjoint sets such that every edge will take us from one of the sets to other
 
-```c++
+```cpp
 vector<vector<int>> adj_list;
 int V;
 bool bipartite_check(int v){
@@ -181,7 +181,7 @@ flowchart LR
     - 2->5 is cross edge
     - 6->2 is back edge
 
-```c++
+```cpp
 vector<vector<int>> adj_list;
 int V;
 const int UNVISITED = 0, EXPLORED = 1, VISITED = 2;
@@ -217,7 +217,7 @@ void edge_property_check(){
 
 ## Articulation vertices and edges
 
-```c++
+```cpp
 vector<int> dfs_num(V,-1), dfs_low(V,0), dfs_parent(V,-1), artVertex(V,-1);
 int nCounter = 0, dfs_root, nRootChildren;
 
@@ -255,7 +255,7 @@ void articulationPointAndBrige(){
 
 ## Kosaraju's Algorithm for Strongly Connected Components
 
-```c++
+```cpp
 stack<int> stk;
 vector<int> visited(V,0);
 vector<vector<int>> adj_list_transpose(V);

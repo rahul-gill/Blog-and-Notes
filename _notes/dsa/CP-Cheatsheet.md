@@ -1,8 +1,8 @@
 ---
-layout: default
-name: _notes/dsa/CP Cheatsheet.md
+layout: note
+name: CP Cheatsheet
 categories: DSA
-date: 2021-10-19
+date: 2021-10-20
 ---
 ### My Map of Things
 
@@ -60,13 +60,13 @@ date: 2021-10-19
 	- float format `floatfield`: fixed, scietific
 	- `adjustfield`: internal, left, right
 	- independent flags: `skipws`
-```c++
+```cpp
 cout.flags(ios::right | ios::hex | ios::showbase)
 ```
 
 - arrays
 
-```c++
+```cpp
 fill_n(arr_begin, arr_size, value_to_fill);
 copy(arr_begin, arr_end, result_arr_begin);
 reverse(arr_begin, arr_end);
@@ -116,12 +116,12 @@ islower, isupper, isalpha, isdigit, isalnum etc.
 ```
 
 - stack, queue, deque and priority_queue
-```c++
+```cpp
 stack/priority_queue<int> s;s.push('a'); s.pop(); s.empty(); s.top()
 queue<char> s; s.push('a'); s.pop(); s.empty(); s.front(); s.back()
 deque<char> s; push_back,pop_back,push_front,pop_front,front,back,empty
 ```
 - map/set and their muli and unordered variants
-```c++
+```cpp
 s.insert(3); s.find(3); s.erase(3); s.lower_bound(3); //etc.
 ```

@@ -1,0 +1,37 @@
+{% if include.isSidebar %}
+<nav class="navbar navlinks">
+    <button class="navbar-toggler d-flex w-100 justify-content-between" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+        <span>{{page.categories}}/{{ page.name | replace: '-', ' ' }}</span>
+        <i style="float: right;" class="fa fa-bars menu-icon" aria-hidden="true"></i>
+    </button>
+
+    <div class="navbar-collapse show" id="navbarSupportedContent">
+        <div class="m-1 mt-2">
+{% endif %}
+          <ul style="padding-top: 0.1em;">
+            {% for aNote in site.notes%}
+            {% if aNote.categories == page.categories%}
+              <li style="
+                line-height: 1; 
+                padding-top: 0.4em;
+               
+              ">
+                  <a href="{{ aNote.url | absolute_url }}"
+                    {% if aNote.name == page.name%}
+                      style="color:rgb(255, 192, 104);"
+                    {%endif%}
+                  >{{ aNote.name }}
+                  </a>
+                </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+{% if include.isSidebar %}
+        </div>
+    </div>
+</nav>
+{% endif %}
+
+<!--
+-->

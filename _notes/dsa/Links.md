@@ -1,8 +1,8 @@
 ---
-layout: default
-name: _notes/dsa/Links.md
+layout: note
+name: Links
 categories: DSA
-date: 2021-10-19
+date: 2021-10-20
 ---
 https://www.cut-the-knot.org/
 

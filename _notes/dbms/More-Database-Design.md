@@ -1,8 +1,8 @@
 ---
-layout: default
-name: _notes/dbms/More Database Design.md
+layout: note
+name: More Database Design
 categories: Databases
-date: 2021-10-19
+date: 2021-10-20
 ---
 ${toc}
 # Steps in design

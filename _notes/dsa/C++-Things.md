@@ -1,8 +1,8 @@
 ---
-layout: default
-name: _notes/dsa/C++ Things.md
+layout: note
+name: C++ Things
 categories: DSA
-date: 2021-10-19
+date: 2021-10-20
 ---
 # GCC built-ins
 ```

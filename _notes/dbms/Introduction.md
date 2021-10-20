@@ -1,8 +1,8 @@
 ---
-layout: default
-name: _notes/dbms/Introduction.md
+layout: note
+name: Introduction
 categories: Databases
-date: 2021-10-19
+date: 2021-10-20
 ---
 ${toc}
 # Introduction
