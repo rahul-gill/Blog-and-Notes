@@ -2,7 +2,6 @@
 layout: default
 ---
 
-<small>{{ page.date | date: "%-d %B %Y" }}</small>
 <h1 style="border-bottom-width: 0px;margin-bottom: 0px;">{{ page.name }}</h1>
 <hr style="
   border-bottom-width: 4px;
@@ -11,7 +10,3 @@ layout: default
   margin-bottom: 25px;">
 
 {{content}}
-
-{% if page.tags %}
-  <small>tags: <em>{{ page.tags | join: "</em> - <em>" }}</em></small>
-{% endif %}

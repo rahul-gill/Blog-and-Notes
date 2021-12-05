@@ -99,6 +99,7 @@ footer {
   overflow-y: overlay;
   margin-top: 20px;
   float: right;
+  max-width: 2000px;
 }
 
 #header h1 {
@@ -118,6 +119,9 @@ footer {
   -webkit-font-smoothing: antialiased;
 }
 
+#no-before::before {
+  content: "" !important;
+}
 #header h1::before {
   content: "./";
 }
