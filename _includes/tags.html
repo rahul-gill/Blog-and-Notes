@@ -1,5 +1,5 @@
 <div>
-    {% if page.tags %}
+    {% if page.tags and page.tags != null and page.tags.size != 0 %}
     Tags:
     {% for tag in page.tags %}
     <a href="{{ '/' | relative_url }}search?q={{tag}}" class="tag" style="font-family: 'Cascadia Code';">{{tag}}</a>

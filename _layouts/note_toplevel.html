@@ -14,11 +14,6 @@ layout: default
     <li style="line-height: 1; padding-top: 0.4em;">
       <a href="{{ note.url | absolute_url }}"> {{ note.name }}</a>
       <br>
-      <span class="tag">
-        <small>
-          &lt;{{ node.tags | join: '/&gt; &lt;' }}/&gt;
-        </small>
-      </span>
     </li>
     {% endfor %}
   </ul>

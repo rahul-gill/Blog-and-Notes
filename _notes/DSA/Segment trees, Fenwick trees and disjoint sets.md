@@ -1,9 +1,11 @@
 ---
+name: Segment trees, Fenwick trees and disjoint sets
+updated: 2022-03-19 15:35:14Z
+created: 2021-08-28 10:18:02Z
 layout: note
-name: Advanced Data Structures
 categories: DSA
-date: 2021-10-20
 ---
+
 - [Segment Trees](#segment-trees)
     - [memory efficient implementation](#memory-efficient-implementation)
     - [Lazy Propagation for range updates](#lazy-propagation-for-range-updates)
@@ -23,7 +25,8 @@ date: 2021-10-20
     - query segment intersects with both children segments
     - why sum queries are $\mathcal{O}(\log n)$:
     
-<div class="mermaid">    %%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ffff33', 'background': '#ff0000','titleColor':'#ffffff','nodeBorder':'#000000'}}}%%
+    ```mermaid
+    %%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ffff33', 'background': '#ff0000','titleColor':'#ffffff','nodeBorder':'#000000'}}}%%
     flowchart TD;
         a(left)
         b(mid1)
@@ -39,7 +42,8 @@ date: 2021-10-20
         bII --> b22
     
     
-</div>    
+    ```
+    
     since the range of sum queried will cover up the mid completely, it'll just return the result and won't do a recursive call. But the left and right can do recursive call. So even if there are four vertices in current level there will be <4 in next level. Hence proved by induction. So at most $4\log n$ steps
     
 - update queries are also $\mathcal{O}(\log n)$
@@ -155,7 +159,7 @@ private:
     
     - finding max and number of times it appears: the action would be
     
-    ```
+    ```cpp
     pair<int, int> combine(pair<int, int> a, pair<int, int> b) {
         if (a.first > b.first) 
             return a;
@@ -167,7 +171,7 @@ private:
     
     - finding the $k^{th}$ zero
     
-```cpp
+    ```cpp
     int find_kth(int v, int tl, int tr, int k) {
         if (k > t[v]) return -1;
         if (tl == tr) return tl;
@@ -181,7 +185,7 @@ private:
     - for x, find smallest index i such that the sum of the first i elements of the array is >=x: same idea as kth zero
     - for given x and range $[l,r]$ find smallest i such that $a[i]\gt x$
     
-    ```
+    ```cpp
     int get_first(int v, int lv, int rv, int l, int r, int x) {
         if(lv > r || rv < l) return -1;
         if(l <= lv && rv <= r) {
